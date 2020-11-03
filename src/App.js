@@ -33,7 +33,7 @@ const App = ({ currentUser, setCurrentUser }) => {
   }, []); // eslint-disable-line
 
   return (
-    <div>
+    <div className='container'>
       <Header />
       <Switch>
         <Route path='/' component={HomePage} exact />

@@ -1,6 +1,5 @@
 body {
   font-family: 'Open Sans Condensed', sans-serif;
-  padding: 20px 60px;
 }
 
 * {
@@ -10,4 +9,8 @@ body {
 a {
   text-decoration: none;
   color: black;
+}
+
+.container {
+  padding: 16px 40px;
 }
