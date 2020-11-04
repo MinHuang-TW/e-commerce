@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
-import './SignUp.styles.scss';
+import { SignUpContainer, SignUpTitle } from './SignUp.styles';
 
 const SignUp = () => {
   const initialState = {
@@ -39,8 +39,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className='sign-up'>
-      <h2 className='title'>I do not have an account</h2>
+    <SignUpContainer>
+      <SignUpTitle>I do not have an account</SignUpTitle>
       <span>Sign up with your email and password</span>
 
       <form className='sign-up-form' onSubmit={handleSubmit}>
@@ -78,7 +78,7 @@ const SignUp = () => {
         />
         <Button type='submit'>SIGN UP</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
-import './SignIn.styles.scss';
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsContainer,
+} from './SignIn.styles';
 
 const SignIn = () => {
   const initialState = {
@@ -28,15 +32,15 @@ const SignIn = () => {
   };
 
   return (
-    <div className='sign-in'>
-      <h2 className='title'>I already have an account</h2>
+    <SignInContainer>
+      <SignInTitle>I already have an account</SignInTitle>
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         <FormInput
           name='email'
           type='email'
-          label='email'
+          label='Email'
           handleChange={handleChange}
           value={email}
           required
@@ -45,20 +49,20 @@ const SignIn = () => {
         <FormInput
           name='password'
           type='password'
-          label='password'
+          label='Password'
           handleChange={handleChange}
           value={password}
           required
         />
 
-        <div className='buttons'>
+        <ButtonsContainer>
           <Button type='submit'>Sign in</Button>
           <Button type='button' onClick={signInWithGoogle} isGoogleSignIn>
             Sign in with Google
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
