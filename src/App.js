@@ -13,7 +13,7 @@ import './App.css';
 
 const App = ({ currentUser, setCurrentUser }) => {
   useEffect(() => {
-    const subscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    const unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -28,7 +28,7 @@ const App = ({ currentUser, setCurrentUser }) => {
       }
     });
     return () => {
-      subscribeFromAuth();
+      unSubscribeFromAuth();
     };
   }, []); // eslint-disable-line
 
