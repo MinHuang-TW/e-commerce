@@ -7,6 +7,16 @@ export const selectCollections = createSelector(
   (shop) => shop.collections
 );
 
+export const selectIsCollectionFetching = createSelector(
+  [selectShop],
+  (shop) => shop.isFetching
+);
+
+export const selectIsCollectionsLoaded = createSelector(
+  [selectShop],
+  (shop) => !!shop.collections
+);
+
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
   (collections) =>

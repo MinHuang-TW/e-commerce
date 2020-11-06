@@ -3,6 +3,7 @@ import {
   ADD_ITEM,
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
+  CLEAR_CART,
 } from './cart-types';
 import { addItemToCart, removeItemFromCart } from './cart-utils';
 
@@ -37,6 +38,12 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         cartItems: state.cartItems.filter(
           (cartItem) => cartItem.id !== action.payload.id
         ),
+      };
+
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartItems: [],
       };
 
     default:

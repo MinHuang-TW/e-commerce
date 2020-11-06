@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { signUpStart } from '../../redux/user/user-actions';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { SignUpContainer, SignUpTitle } from './SignUp.styles';
 
-const SignUp = () => {
+const SignUp = ({ signUpStart }) => {
   const initialState = {
     displayName: '',
     email: '',
@@ -25,17 +26,7 @@ const SignUp = () => {
       alert('Password does not match');
       return;
     }
-
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await createUserProfileDocument(user, { displayName });
-      setState(initialState);
-    } catch (error) {
-      console.log(error);
-    }
+    signUpStart({ displayName, email, password });
   };
 
   return (
@@ -43,7 +34,7 @@ const SignUp = () => {
       <SignUpTitle>I do not have an account</SignUpTitle>
       <span>Sign up with your email and password</span>
 
-      <form className='sign-up-form' onSubmit={handleSubmit}>
+      <form className='sign-up-form'>
         <FormInput
           type='text'
           name='displayName'
@@ -76,10 +67,16 @@ const SignUp = () => {
           onChange={handleChange}
           required
         />
-        <Button type='submit'>SIGN UP</Button>
+        <Button type='submit' onClick={handleSubmit}>
+          SIGN UP
+        </Button>
       </form>
     </SignUpContainer>
   );
 };
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials)),
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);
