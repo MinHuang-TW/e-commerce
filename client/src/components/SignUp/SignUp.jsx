@@ -6,22 +6,21 @@ import Button from '../Button/Button';
 import { SignUpContainer, SignUpTitle } from './SignUp.styles';
 
 const SignUp = ({ signUpStart }) => {
-  const initialState = {
+  const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
-  };
-  const [state, setState] = useState(initialState);
+  });
+  const { displayName, email, password, confirmPassword } = userCredentials;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setState({ ...state, [name]: value });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { displayName, email, password, confirmPassword } = state;
     if (password !== confirmPassword) {
       alert('Password does not match');
       return;
@@ -34,12 +33,12 @@ const SignUp = ({ signUpStart }) => {
       <SignUpTitle>I do not have an account</SignUpTitle>
       <span>Sign up with your email and password</span>
 
-      <form className='sign-up-form'>
+      <form className='sign-up-form' onSubmit={handleSubmit}>
         <FormInput
           type='text'
           name='displayName'
           label='Display Name'
-          value={state.displayName}
+          value={displayName}
           onChange={handleChange}
           required
         />
@@ -47,7 +46,7 @@ const SignUp = ({ signUpStart }) => {
           type='email'
           name='email'
           label='Email'
-          value={state.email}
+          value={email}
           onChange={handleChange}
           required
         />
@@ -55,7 +54,7 @@ const SignUp = ({ signUpStart }) => {
           type='password'
           name='password'
           label='Password'
-          value={state.password}
+          value={password}
           onChange={handleChange}
           required
         />
@@ -63,13 +62,11 @@ const SignUp = ({ signUpStart }) => {
           type='password'
           name='confirmPassword'
           label='Confirm Password'
-          value={state.confirmPassword}
+          value={confirmPassword}
           onChange={handleChange}
           required
         />
-        <Button type='submit' onClick={handleSubmit}>
-          SIGN UP
-        </Button>
+        <Button type='submit'>SIGN UP</Button>
       </form>
     </SignUpContainer>
   );

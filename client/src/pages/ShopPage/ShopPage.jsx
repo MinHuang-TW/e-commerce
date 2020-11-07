@@ -8,7 +8,7 @@ import CollectionsOverviewContainer from '../../components/CollectionsOverview/C
 const ShopPage = ({ match, fetchCollectionsStart }) => {
   useEffect(() => {
     fetchCollectionsStart();
-  }, []); // eslint-disable-line
+  }, [fetchCollectionsStart]);
 
   return (
     <div className='shop-page'>

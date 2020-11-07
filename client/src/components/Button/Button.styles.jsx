@@ -15,10 +15,10 @@ const buttonStyles = css`
 const googleSignInStyles = css`
   background: #4285f4;
   color: white;
+  border: none;
 
   &:hover {
     background: #357ae8;
-    border: none;
   }
 `;
 
@@ -41,7 +41,7 @@ const getButtonStyles = ({ isGoogleSignIn, inverted }) => {
   return inverted ? invertedButtonStyles : buttonStyles;
 };
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.button`
   min-width: 165px;
   width: auto;
   height: 50px;

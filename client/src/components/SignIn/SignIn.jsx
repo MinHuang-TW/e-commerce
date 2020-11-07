@@ -13,16 +13,15 @@ import {
 } from './SignIn.styles';
 
 const SignIn = ({ googleSignInStart, emailSignInStart }) => {
-  const initialState = {
+  const [userCredentials, setUserCredentials] = useState({
     email: '',
     password: '',
-  };
-  const [state, setState] = useState(initialState);
-  const { email, password } = state;
+  });
+  const { email, password } = userCredentials;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setState({ ...state, [name]: value });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   const handleSubmit = async (event) => {
@@ -35,7 +34,7 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
       <SignInTitle>I already have an account</SignInTitle>
       <span>Sign in with your email and password</span>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormInput
           name='email'
           type='email'
@@ -53,9 +52,7 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
           required
         />
         <ButtonsContainer>
-          <Button type='submit' onClick={handleSubmit}>
-            Sign in
-          </Button>
+          <Button type='submit'>Sign in</Button>
           <Button type='button' onClick={googleSignInStart} isGoogleSignIn>
             Sign in with Google
           </Button>

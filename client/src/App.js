@@ -11,7 +11,7 @@ import './App.css';
 const App = ({ currentUser, checkUserSession }) => {
   useEffect(() => {
     checkUserSession();
-  }, []); // eslint-disable-line
+  }, [checkUserSession]);
 
   return (
     <div className='container'>
