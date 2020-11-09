@@ -4,6 +4,14 @@ export const SignInContainer = styled.section`
   width: 380px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+
+    button {
+      min-width: unset;
+    }
+  }
 `;
 
 export const SignInTitle = styled.h2`
