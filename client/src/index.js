@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
-// import * as serviceWorker from './serviceWork';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import App from './App';
 import './index.css';
 
@@ -19,4 +19,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// serviceWorker.register();
+serviceWorkerRegistration.register();
