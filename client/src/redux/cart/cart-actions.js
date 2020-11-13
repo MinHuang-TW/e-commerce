@@ -4,6 +4,8 @@ import {
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
   CLEAR_CART,
+  SET_CART_FROM_FIREBASE,
+  UPDATE_CART_IN_FIREBASE,
 } from './cart-types';
 
 export const toggleCartHidden = () => ({
@@ -27,4 +29,13 @@ export const clearItemFromCart = (item) => ({
 
 export const clearCart = () => ({
   type: CLEAR_CART,
+});
+
+export const setCartFromFirebase = (cartItems) => ({
+  type: SET_CART_FROM_FIREBASE,
+  payload: cartItems,
+});
+
+export const updateCartInFirebase = () => ({
+  type: UPDATE_CART_IN_FIREBASE,
 });
